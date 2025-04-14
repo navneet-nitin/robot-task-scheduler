@@ -1,0 +1,171 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Scheduling for the Robotic Assistant</title>
+  <!-- Custom Futuristic Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+      background-color: #0d1117;
+      color: #c9d1d9;
+    }
+
+    header {
+      background-color: #161b22;
+      padding: 1rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid #30363d;
+    }
+
+    h1, h2 {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    input[type="number"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: none;
+      margin-right: 1rem;
+      width: 200px;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      background-color: #238636;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .output {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+
+    pre {
+      background-color: #161b22;
+      padding: 1rem;
+      overflow-x: auto;
+      border: 1px solid #30363d;
+      border-radius: 5px;
+    }
+
+    code {
+      color: #58a6ff;
+    }
+
+    .complexity {
+      background-color: #0d1117;
+      padding: 1rem;
+      border-left: 4px solid #58a6ff;
+    }
+
+    footer {
+      background-color: #161b22;
+      padding: 1rem 2rem;
+      text-align: center;
+      border-top: 1px solid #30363d;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Task Scheduling for the Robotic Assistant</h1>
+  </header>
+
+  <main>
+    <section>
+      <p>
+        Meet <strong>RoboX</strong>, your futuristic robotic assistant! RoboX performs a series of tasks, each requiring
+        increasing amounts of time: 1 hour for the first, 2 hours for the second, 3 hours for the third, and so on.
+        Given a total number of available hours, how many full tasks can RoboX complete?
+      </p>
+    </section>
+
+    <section>
+      <h2>Try it yourself:</h2>
+      <input type="number" id="hoursInput" placeholder="Enter available hours">
+      <button onclick="calculateTasks()">Calculate</button>
+      <div class="output" id="output"></div>
+    </section>
+
+    <section>
+      <h2>Java Implementation</h2>
+      <pre><code>class RoboX {
+    public int TheFuture(int n) {
+        int start = 1, end = n;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            long sum = (long) mid * (mid + 1) / 2;
+            if (sum == n)
+                return mid;
+            else if (sum < n)
+                start = mid + 1;
+            else
+                end = mid - 1;
+        }
+        return end;
+    }
+}</code></pre>
+    </section>
+
+    <section class="complexity">
+      <h2>Time &amp; Space Complexity</h2>
+      <p><strong>Time Complexity:</strong> O(log n) — due to binary search.</p>
+      <p><strong>Space Complexity:</strong> O(1) — constant space used.</p>
+    </section>
+  </main>
+
+  <footer>
+    Built with ❤️ by Your Navneet | 2025 | Haldia Institute of Technology
+  </footer>
+
+  <script>
+    function calculateTasks() {
+      const n = parseInt(document.getElementById('hoursInput').value);
+      let start = 1, end = n, result = 0;
+
+      while (start <= end) {
+        let mid = Math.floor(start + (end - start) / 2);
+        let sum = mid * (mid + 1) / 2;
+
+        if (sum === n) {
+          result = mid;
+          break;
+        } else if (sum < n) {
+          result = mid;
+          start = mid + 1;
+        } else {
+          end = mid - 1;
+        }
+      }
+
+      document.getElementById('output').innerText = `RoboX can complete ${result} task(s) in ${n} hour(s).`;
+    }
+  </script>
+</body>
+
+</html>
