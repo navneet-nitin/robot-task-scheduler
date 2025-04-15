@@ -60,5 +60,4 @@ Click below to use the simulator directly in your browser (no downloads needed):
 
 ---
 
-## 🧠 Sample Output
 
