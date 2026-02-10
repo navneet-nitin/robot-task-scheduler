@@ -56,7 +56,7 @@ Click below to use the simulator directly in your browser (no downloads needed):
 
 - **HTML + JavaScript** (for browser execution)
 - **Java logic simulated through JS**
-- **Deployed via GitHub Pages**
+- **Deployed via GitHub Pages.**
 
 ---
 
